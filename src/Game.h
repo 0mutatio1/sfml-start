@@ -5,21 +5,28 @@
 #ifndef GAME_H
 #define GAME_H
 #include <SFML/Graphics.hpp>
-class Game {
+
+class Game : private sf::NonCopyable {
 public:
     Game();
     void run();
-    void runWithDeltaTime();
 private:
     void processEvents();
-    void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
     void update(sf::Time deltaTime);
     void render();
+
+    void updateStatistics(sf::Time elapsedTime);
+    void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 private:
+    static const float PlayerSpeed;
+    static const sf::Time TimePerFrame;
     sf::RenderWindow mWindow;
-    sf::Sprite mPlayer;
     sf::Texture mTexture;
-    sf::Time TimePerFrame{ sf::seconds(1.f / 60.f) };
+    sf::Sprite mPlayer;
+    sf::Font mFont;
+    sf::Text mStatisticsText;
+    sf::Time mStatisticsUpdateTime;
+    std::size_t mStatisticsNumFrames;
     bool mIsMovingUp{ false };
     bool mIsMovingDown{ false };
     bool mIsMovingLeft{ false };
