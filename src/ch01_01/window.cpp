@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+#include <../../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics.hpp>
 #include <iostream>
 
 int window()

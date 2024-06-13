@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
-project(sfml LANGUAGES CXX)
+project(asdf )
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY E:/cmakeeeee/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 include(FetchContent)
@@ -10,7 +10,10 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(main src/main.cpp "src/window.cpp" "src/circle.cpp" "src/img/leaf.png")
+
+
+
+add_executable(main src/main.cpp src/Game.h)
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
