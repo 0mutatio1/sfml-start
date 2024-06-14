@@ -16,7 +16,12 @@ FetchContent_MakeAvailable(SFML)
 add_executable(main src/main.cpp src/Game.h
         src/StringHelpers.h
         src/StringHelpers.inl
-        src/Game.cpp)
+        src/Game.cpp
+        src/TextureHolder.cpp
+        src/TextureHolder.h
+        src/TextureHolder.h
+        src/ResourceHolder.h
+        src/ResourceHolder.h)
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
