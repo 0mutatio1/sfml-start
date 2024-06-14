@@ -16,6 +16,7 @@ private:
     void render();
 
     void updateStatistics(sf::Time elapsedTime);
+    void updateStatistics0(sf::Time elapsedTime);
     void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 private:
     static const float PlayerSpeed;

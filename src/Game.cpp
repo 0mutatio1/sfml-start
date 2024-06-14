@@ -92,9 +92,23 @@ void Game::run() {
             timeSinceLastUpdate -= TimePerFrame;
             processEvents();
             update(TimePerFrame);
+            updateStatistics0(TimePerFrame);
         }
-        updateStatistics(elapsedTime);
+        // updateStatistics(elapsedTime);
         render();
+    }
+}
+
+void Game::updateStatistics0(sf::Time elapsedTime) {
+    mStatisticsUpdateTime += elapsedTime;
+    mStatisticsNumFrames += 1;
+    if (mStatisticsUpdateTime >= sf::seconds(1.0f)) {
+        std::cout << " mStatisticsNumFrames: " << mStatisticsNumFrames << std::endl;
+        mStatisticsText.setString(
+            "Frames / Second = " + toString(mStatisticsNumFrames) + "\n" +
+            "Time / Update = " + toString(mStatisticsUpdateTime.asMicroseconds() / mStatisticsNumFrames) + "us");
+        mStatisticsUpdateTime -= sf::seconds(1.0f);
+        mStatisticsNumFrames = 0;
     }
 }
 
@@ -102,6 +116,7 @@ void Game::updateStatistics(sf::Time elapsedTime) {
     mStatisticsUpdateTime += elapsedTime;
     mStatisticsNumFrames += 1;
     if (mStatisticsUpdateTime >= sf::seconds(1.0f)) {
+        std::cout << " mStatisticsNumFrames: " << mStatisticsNumFrames << std::endl;
         mStatisticsText.setString(
             "Frames / Second = " + toString(mStatisticsNumFrames) + "\n" +
             "Time / Update = " + toString(mStatisticsUpdateTime.asMicroseconds() / mStatisticsNumFrames) + "us");
