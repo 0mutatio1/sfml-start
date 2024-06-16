@@ -18,16 +18,14 @@ Game::Game()
 , mStatisticsUpdateTime()
 , mStatisticsNumFrames(0)
 {
-    //if (!mTexture.loadFromFile("D:/sfml-start/src/Eagle.png"))
-    if (!mTexture.loadFromFile("E:/sfml-start/src/Eagle.png"))
+    if (!mTexture.loadFromFile("D:/sfml-start/src/Eagle.png"))
     {
         std::cout << "load image failed" << std::endl;
     }
     mPlayer.setTexture(mTexture);
     mPlayer.setPosition(100.f, 100.f);
 
-    // mFont.loadFromFile("D:/sfml-start/src/Sansation.ttf");
-    mFont.loadFromFile("E:/sfml-start/src/Sansation.ttf");
+    mFont.loadFromFile("D:/sfml-start/src/Sansation.ttf");
     mStatisticsText.setFont(mFont);
     mStatisticsText.setPosition(5.f, 5.f);
     mStatisticsText.setCharacterSize(10);

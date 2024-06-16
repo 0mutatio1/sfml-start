@@ -13,15 +13,17 @@ FetchContent_MakeAvailable(SFML)
 
 
 
-add_executable(main src/main.cpp src/Game.h
-        src/StringHelpers.h
-        src/StringHelpers.inl
+add_executable(main 
+        src/main.cpp 
         src/Game.cpp
-        src/TextureHolder.cpp
-        src/TextureHolder.h
-        src/TextureHolder.h
-        src/ResourceHolder.h
-        src/ResourceHolder.h)
+        src/Game.h
+        src/Entity.h
+        src/Entity.cpp
+        src/Aircraft.h
+        src/Aircraft.cpp
+        src/StringHelpers.h
+        src/StringHelpers.inl                              
+        src/ResourceHolder.h "src/Aircraft.cpp" "src/SceneNode.h" "src/SceneNode.cpp" "src/ResourceIdentifiers.h" "src/SpriteNode.h" "src/World.cpp" "src/World.h")
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
