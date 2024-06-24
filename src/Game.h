@@ -5,6 +5,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include <SFML/Graphics.hpp>
+#include "World.h"
 
 class Game : private sf::NonCopyable {
 public:
@@ -22,6 +23,7 @@ private:
     static const float PlayerSpeed;
     static const sf::Time TimePerFrame;
     sf::RenderWindow mWindow;
+    World mWorld;
     sf::Texture mTexture;
     sf::Sprite mPlayer;
     sf::Font mFont;

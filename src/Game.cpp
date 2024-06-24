@@ -11,6 +11,7 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Game::Game()
 : mWindow(sf::VideoMode(640, 480), "SFML App", sf::Style::Close)
+, mWorld(mWindow)
 , mTexture()
 , mPlayer()
 , mFont()
@@ -77,8 +78,9 @@ void Game::update(sf::Time deltaTime)
 }
 void Game::render() {
     mWindow.clear();
+    mWorld.draw();
     //
-    mWindow.draw(mPlayer);
+    mWindow.setView(mWindow.getDefaultView());
     mWindow.draw(mStatisticsText);
     mWindow.display();
 }
