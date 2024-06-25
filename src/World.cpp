@@ -25,5 +25,6 @@ World::World(sf::RenderWindow& window)
 }
 
 void World::update(sf::Time dt) {
-
+    mWorldView.move(0.f, mScrollSpeed * dt.asSeconds());
+    mPlayerAircraft->setVelocity(0.f, 0.f);
 }
