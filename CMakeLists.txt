@@ -11,19 +11,32 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 
+add_executable(
+    main
+    src/main.cpp
+    src/include/StringHelpers.h
+    src/include/ResourceHolder.h
+    src/Game.cpp
+    src/include/Game.h
+    src/World.cpp
+    src/include/World.h
+    src/Player.cpp
+    src/include/Player.h
+    src/CommandQueue.cpp
+    src/include/CommandQueue.h
+    src/include/ResourceIdentifiers.h
+    src/SceneNode.cpp
+    src/include/SceneNode.h
+    src/Aircraft.cpp
+    src/include/Aircraft.h
+    src/Command.cpp
+    src/include/Command.h
+    src/Entity.cpp
+    src/include/Entity.h
+    src/SpriteNode.cpp
+    src/include/SpriteNode.h
+)
 
-
-add_executable(main 
-        src/main.cpp 
-        src/Game.cpp
-        src/Game.h
-        src/Entity.h
-        src/Entity.cpp
-        src/Aircraft.h
-        src/Aircraft.cpp
-        src/StringHelpers.h
-        src/StringHelpers.inl                              
-        src/ResourceHolder.h "src/Aircraft.cpp" "src/SceneNode.h" "src/SceneNode.cpp" "src/ResourceIdentifiers.h" "src/SpriteNode.h" "src/World.cpp" "src/World.h")
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
