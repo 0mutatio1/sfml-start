@@ -23,3 +23,7 @@ World::World(sf::RenderWindow& window)
     buildScene();
     mWorldView.setCenter(mSpawnPosition);
 }
+
+void World::update(sf::Time dt) {
+
+}
