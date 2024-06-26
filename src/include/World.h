@@ -5,12 +5,12 @@
 #ifndef WORLD_H
 #define WORLD_H
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "include/CommandQueue.h"
-#include "include/Aircraft.h"
-#include "include/SceneNode.h"
+#include "CommandQueue.h"
+#include "Aircraft.h"
+#include "SceneNode.h"
 
 #include "ResourceHolder.h"
-#include "include/ResourceIdentifiers.h"
+#include "ResourceIdentifiers.h"
 
 #include <array>
 #include <queue>

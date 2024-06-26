@@ -2,7 +2,7 @@
 // Created by stone on 2024-06-25.
 //
 
-#include "Game.h"
+#include "include/Game.h"
 
 #include <stdexcept>
 #include <iostream>

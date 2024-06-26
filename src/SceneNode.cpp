@@ -7,7 +7,7 @@
 
 #include <algorithm>
 #include <cassert>
-
+#include <iostream>
 
 SceneNode::SceneNode()
 	: mChildren()
@@ -85,7 +85,7 @@ void SceneNode::onCommand(const Command& command, sf::Time dt) {
 }
 
 unsigned int SceneNode::getCategory() const {
-	return Category::None;
+	return Category::Scene;
 }
 
 
