@@ -38,7 +38,9 @@ add_executable(
     "src/include/Category.h"
     src/State.cpp
     src/include/State.h
-    src/include/StateIdentifiers.h)
+    src/include/StateIdentifiers.h
+    src/StateStack.cpp
+    src/include/StateStack.h)
 
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
