@@ -47,8 +47,12 @@ add_executable(
     src/include/Application.h
     src/TitleState.cpp
     src/include/TitleState.h
-        src/Utility.cpp
-        src/include/Utility.h)
+    src/Utility.cpp
+    src/include/Utility.h
+    src/MenuState.cpp
+    src/include/MenuState.h
+        src/PauseState.cpp
+        src/include/PauseState.h)
 
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)

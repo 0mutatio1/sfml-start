@@ -4,7 +4,11 @@
 
 #include "include/Application.h"
 
+#include "include/GameState.h"
+#include "include/MenuState.h"
+#include "include/PauseState.h"
 #include "include/StringHelpers.h"
+#include "include/TitleState.h"
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
@@ -20,6 +24,11 @@ Application::Application()
 {
     mWindow.setKeyRepeatEnabled(false);
     mFonts.load(Fonts::Main, "D:/sfml-start/src/Media/Sansation.ttf");
+
+    mTextures.load(Textures::TitleScreen, "D:/sfml-start/src/Media/TitleScreen.png");
+    mTextures.load(Textures::ButtonNormal, "D:/sfml-start/src/Media/ButtonNormal.png");
+    mTextures.load(Textures::ButtonSelected, "D:/sfml-start/src/Media/ButtonSelected.png");
+    mTextures.load(Textures::ButtonPressed, "D:/sfml-start/src/Media/ButtonPressed.png");
 
     mStatisticsText.setFont(mFonts.get(Fonts::Main));
     mStatisticsText.setPosition(5.f, 5.f);
@@ -86,7 +95,10 @@ void Application::updateStatistices(sf::Time dt) {
 }
 
 void Application::registerStates() {
-
+    mStateStack.registerState<TitleState>(States::Title);
+    mStateStack.registerState<MenuState>(States::Menu);
+    mStateStack.registerState<GameState>(States::Game);
+    mStateStack.registerState<PauseState>(States::Pause);
 }
 
 
