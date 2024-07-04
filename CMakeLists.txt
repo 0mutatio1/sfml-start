@@ -40,7 +40,15 @@ add_executable(
     src/include/State.h
     src/include/StateIdentifiers.h
     src/StateStack.cpp
-    src/include/StateStack.h)
+    src/include/StateStack.h
+    src/GameState.cpp
+    src/include/GameState.h
+    src/Application.cpp
+    src/include/Application.h
+    src/TitleState.cpp
+    src/include/TitleState.h
+        src/Utility.cpp
+        src/include/Utility.h)
 
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)

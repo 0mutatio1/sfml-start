@@ -15,6 +15,10 @@ namespace Textures {
         Eagle,
         Raptor,
         Desert,
+        TitleScreen,
+        ButtonNormal,
+        ButtonSelected,
+        ButtonPressed,
     };
 }
 namespace Fonts {
