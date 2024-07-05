@@ -56,7 +56,9 @@ add_executable(
     src/LoadingState.cpp
     src/include/LoadingState.h
     src/ParallelTask.cpp
-    src/include/ParallelTask.h)
+    src/include/ParallelTask.h
+        src/Component.cpp
+        src/include/Component.h)
 
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
