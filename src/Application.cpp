@@ -23,12 +23,18 @@ Application::Application()
     , mStatisticsNumFrames(0)
 {
     mWindow.setKeyRepeatEnabled(false);
-    mFonts.load(Fonts::Main, "D:/sfml-start/src/Media/Sansation.ttf");
+    // mFonts.load(Fonts::Main, "D:/sfml-start/src/Media/Sansation.ttf");
+    mFonts.load(Fonts::Main, "E:/sfml-start/src/Media/Sansation.ttf");
 
-    mTextures.load(Textures::TitleScreen, "D:/sfml-start/src/Media/TitleScreen.png");
-    mTextures.load(Textures::ButtonNormal, "D:/sfml-start/src/Media/ButtonNormal.png");
-    mTextures.load(Textures::ButtonSelected, "D:/sfml-start/src/Media/ButtonSelected.png");
-    mTextures.load(Textures::ButtonPressed, "D:/sfml-start/src/Media/ButtonPressed.png");
+    // mTextures.load(Textures::TitleScreen, "D:/sfml-start/src/Media/TitleScreen.png");
+    // mTextures.load(Textures::ButtonNormal, "D:/sfml-start/src/Media/ButtonNormal.png");
+    // mTextures.load(Textures::ButtonSelected, "D:/sfml-start/src/Media/ButtonSelected.png");
+    // mTextures.load(Textures::ButtonPressed, "D:/sfml-start/src/Media/ButtonPressed.png");
+
+    mTextures.load(Textures::TitleScreen, "E:/sfml-start/src/Media/TitleScreen.png");
+    mTextures.load(Textures::ButtonNormal, "E:/sfml-start/src/Media/ButtonNormal.png");
+    mTextures.load(Textures::ButtonSelected, "E:/sfml-start/src/Media/ButtonSelected.png");
+    mTextures.load(Textures::ButtonPressed, "E:/sfml-start/src/Media/ButtonPressed.png");
 
     mStatisticsText.setFont(mFonts.get(Fonts::Main));
     mStatisticsText.setPosition(5.f, 5.f);
