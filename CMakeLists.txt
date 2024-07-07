@@ -52,7 +52,15 @@ add_executable(
     src/MenuState.cpp
     src/include/MenuState.h
     src/PauseState.cpp
-    src/include/PauseState.h)
+
+    src/include/PauseState.h
+    src/LoadingState.cpp
+    src/include/LoadingState.h
+    src/ParallelTask.cpp
+    src/include/ParallelTask.h
+    src/Component.cpp
+    src/include/Component.h  "src/include/Container.h" "src/Container.cpp")
+
 
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
