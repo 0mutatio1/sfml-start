@@ -9,9 +9,11 @@
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 
-#include "SFML/System/NonCopyable.hpp"
-#include "SFML/Window/Event.hpp"
+#include <SFML/System/NonCopyable.hpp>
 
+namespace sf {
+    class Event;
+}
 
 namespace GUI {
 
@@ -23,7 +25,7 @@ public:
 public:
     Component();
     virtual ~Component();
-    virtual bool isSelecteable() const = 0;
+    virtual bool isSelectable() const = 0;
     bool isSelected() const;
     virtual void select();
     virtual void deselect();

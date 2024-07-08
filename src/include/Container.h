@@ -5,7 +5,7 @@
 #include <memory>
 
 namespace GUI {
-	class Container : Component {
+	class Container : public Component {
 	public:
 		typedef std::shared_ptr<Container> Ptr;
 	public:

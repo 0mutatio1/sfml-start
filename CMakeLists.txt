@@ -59,7 +59,15 @@ add_executable(
     src/ParallelTask.cpp
     src/include/ParallelTask.h
     src/Component.cpp
-    src/include/Component.h  "src/include/Container.h" "src/Container.cpp")
+    src/include/Component.h  "src/include/Container.h" "src/Container.cpp"
+        src/Label.cpp
+        src/include/Label.h
+        src/Button.cpp
+        src/include/Button.h
+        src/SettingState.cpp
+        src/include/SettingState.h
+        src/GameOverState.cpp
+        src/include/GameOverState.h)
 
 
 target_link_libraries(main PRIVATE sfml-graphics)
