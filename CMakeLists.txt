@@ -67,7 +67,16 @@ add_executable(
         src/SettingState.cpp
         src/include/SettingState.h
         src/GameOverState.cpp
-        src/include/GameOverState.h)
+        src/include/GameOverState.h
+        src/DataTables.cpp
+        src/include/DataTables.h
+        src/TextNode.cpp
+        src/include/TextNode.h
+        src/Pickup.cpp
+        src/include/Pickup.h
+        src/Projectile.cpp
+        src/include/Projectile.h
+)
 
 
 target_link_libraries(main PRIVATE sfml-graphics)

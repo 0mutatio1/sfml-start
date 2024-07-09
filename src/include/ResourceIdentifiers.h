@@ -13,12 +13,19 @@ namespace sf {
 namespace Textures {
     enum ID {
         Eagle,
-        Raptor,
-        Desert,
-        TitleScreen,
-        ButtonNormal,
-        ButtonSelected,
-        ButtonPressed,
+		Raptor,
+		Avenger,
+		Bullet,
+		Missile,
+		Desert,
+		HealthRefill,
+		MissileRefill,
+		FireSpread,
+		FireRate,
+		TitleScreen,
+		ButtonNormal,
+		ButtonSelected,
+		ButtonPressed
     };
 }
 namespace Fonts {
