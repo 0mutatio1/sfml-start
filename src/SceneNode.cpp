@@ -92,7 +92,8 @@ unsigned int SceneNode::getCategory() const {
 	return mDefaultCategory;
 }
 
-void SceneNode::checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> collisionPairs) {
+void SceneNode::checkSceneCollision(SceneNode& sceneGraph, std::set<Pair>& collisionPairs)
+{
 	checkNodeCollision(sceneGraph, collisionPairs);
 	for (Ptr& child : sceneGraph.mChildren) {
 		checkSceneCollision(*child, collisionPairs);

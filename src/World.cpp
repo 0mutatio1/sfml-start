@@ -10,6 +10,8 @@
 #include "include/SpriteNode.h"
 #include "include/Pickup.h"
 
+#include <iostream>
+
 World::World(sf::RenderWindow& window, FontHolder& fonts)
     : mWindow(window)
     , mWorldView(window.getDefaultView())
@@ -36,6 +38,7 @@ void World::update(sf::Time dt) {
     //
     destroyEntitiesOutsideView();
     guideMissiles();
+
 
     while (!mCommandQueue.isEmpty()) {
         mSceneGraph.onCommand(mCommandQueue.pop(), dt);
@@ -193,6 +196,15 @@ void World::buildScene()
     mPlayerAircraft = player.get();
     mPlayerAircraft->setPosition(mSpawnPosition);
     mSceneLayers[Air]->attachChild(std::move(player));
+
+	// std::unique_ptr<Aircraft> leftEscort(new Aircraft(Aircraft::Raptor, mTextures, mFonts));
+	// leftEscort->setPosition(-80.f, 50.f);
+	// mPlayerAircraft->attachChild(std::move(leftEscort));
+	//
+	// //
+	// std::unique_ptr<Aircraft> rightEscort(new Aircraft(Aircraft::Raptor, mTextures, mFonts));
+	// rightEscort->setPosition(80.f, 50.f);
+	// mPlayerAircraft->attachChild(std::move(rightEscort));
 
     // Add enemy aircraft
     addEnemies();

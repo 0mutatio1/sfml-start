@@ -25,7 +25,12 @@ namespace Textures {
 		TitleScreen,
 		ButtonNormal,
 		ButtonSelected,
-		ButtonPressed
+		ButtonPressed,
+		Entities,
+		Jungle,
+		Explosion,
+		Particle,
+		FinishLine,
     };
 }
 namespace Fonts {

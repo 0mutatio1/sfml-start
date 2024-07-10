@@ -33,7 +33,7 @@ public:
 	void onCommand(const Command& command, sf::Time dt);
 	virtual unsigned int getCategory() const;
 
-	void checkSceneCollision(SceneNode& sceneGraph, std::set<Pair> collisionPairs);
+	void checkSceneCollision(SceneNode& sceneGraph, std::set<Pair>& collisionPairs);
 	void checkNodeCollision(SceneNode& node, std::set<Pair>& collisionPairs);
 	void removeWrecks();
 	virtual sf::FloatRect getBoundingRect() const;
