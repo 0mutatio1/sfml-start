@@ -11,7 +11,8 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game()
     : mWindow(sf::VideoMode(640, 480), "Input", sf::Style::Close)
-    , mWorld(mWindow)
+    , mFonts()
+    , mWorld(mWindow, mFonts)
     , mPlayer()
     , mFont()
     , mStatisticsText()
@@ -19,6 +20,7 @@ Game::Game()
     , mStatisticsNumFrames(0)
 {
     mWindow.setKeyRepeatEnabled(false);
+    mFonts.load(Fonts::Main, "D:/sfml-start/src/Media/Sansation.ttf");
     mFont.loadFromFile("D:/sfml-start/src/Media/Sansation.ttf");
     mStatisticsText.setFont(mFont);
     mStatisticsText.setPosition(5.f, 5.f);

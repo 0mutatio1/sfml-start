@@ -12,6 +12,7 @@
 
 #include "World.h"
 #include "Player.h"
+#include "ResourceIdentifiers.h"
 
 class Game {
 public:
@@ -27,6 +28,7 @@ private:
     sf::RenderWindow mWindow;
     World mWorld;
     Player mPlayer;
+    FontHolder mFonts;
     sf::Font mFont;
     sf::Text mStatisticsText;
     sf::Time mStatisticsUpdateTime;

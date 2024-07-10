@@ -8,7 +8,7 @@
 
 GameState::GameState(StateStack &stack, Context context)
     : State(stack, context)
-    , mWorld(*context.window)
+    , mWorld(*context.window, *context.fonts)
     , mPlayer(*context.player)
 {
 
