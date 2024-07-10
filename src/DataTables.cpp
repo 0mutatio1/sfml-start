@@ -5,6 +5,7 @@
 #include "include/DataTables.h"
 #include "include/Aircraft.h"
 #include "include/Pickup.h"
+#include "include/Particle.h"
 
 using namespace std::placeholders;
 
@@ -75,6 +76,20 @@ std::vector<PickupData> initializePickupData()
 
     data[Pickup::FireRate].texture = Textures::FireRate;
     data[Pickup::FireRate].action = std::bind(&Aircraft::increaseFireRate, _1);
+
+    return data;
+}
+
+
+std::vector<ParticleData> initializeParticleData()
+{
+    std::vector<ParticleData> data(Particle::ParticleCount);
+
+    data[Particle::Propellant].color = sf::Color(255, 255, 50);
+    data[Particle::Propellant].lifetime = sf::seconds(0.6f);
+
+    data[Particle::Smoke].color = sf::Color(50, 50, 50);
+    data[Particle::Smoke].lifetime = sf::seconds(4.f);
 
     return data;
 }

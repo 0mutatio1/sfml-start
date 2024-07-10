@@ -76,6 +76,14 @@ add_executable(
         src/include/Pickup.h
         src/Projectile.cpp
         src/include/Projectile.h
+        src/Particle.cpp
+        src/include/Particle.h
+        src/ParticleNode.cpp
+        src/include/ParticleNode.h
+        src/EmitterNode.cpp
+        src/include/EmitterNode.h
+        src/Animation.cpp
+        src/include/Animation.h
 )
 
 
