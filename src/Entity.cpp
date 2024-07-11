@@ -1,60 +1,82 @@
-//
-// Created by stone on 2024-06-25.
-//
+#include "Entity.hpp"
 
-#include "include/Entity.h"
+#include <cassert>
+
 
 Entity::Entity(int hitpoints)
-	: mVelocity()
-	, mHitpoints(hitpoints)
+: mVelocity()
+, mHitpoints(hitpoints)
 {
 }
 
-
-void Entity::setVelocity(sf::Vector2f velocity) {
+void Entity::setVelocity(sf::Vector2f velocity)
+{
 	mVelocity = velocity;
 }
 
-void Entity::setVelocity(float vx, float vy) {
+void Entity::setVelocity(float vx, float vy)
+{
 	mVelocity.x = vx;
 	mVelocity.y = vy;
 }
 
-sf::Vector2f Entity::getVelocity() const {
+sf::Vector2f Entity::getVelocity() const
+{
 	return mVelocity;
 }
 
-void Entity::accelerate(sf::Vector2f velocity) {
+void Entity::accelerate(sf::Vector2f velocity)
+{
 	mVelocity += velocity;
 }
 
-void Entity::accelerate(float vx, float vy) {
+void Entity::accelerate(float vx, float vy)
+{
 	mVelocity.x += vx;
 	mVelocity.y += vy;
 }
 
-int Entity::getHitpoints() const {
+int Entity::getHitpoints() const
+{
 	return mHitpoints;
 }
 
-void Entity::repair(int points) {
+void Entity::setHitpoints(int points)
+{
 	assert(points > 0);
+	mHitpoints = points;
+}
+
+void Entity::repair(int points)
+{
+	assert(points > 0);
+
 	mHitpoints += points;
 }
 
-void Entity::damage(int points) {
+void Entity::damage(int points)
+{
 	assert(points > 0);
+
 	mHitpoints -= points;
 }
 
-void Entity::destroy() {
+void Entity::destroy()
+{
 	mHitpoints = 0;
 }
 
-bool Entity::isDestroyed() const {
+void Entity::remove()
+{
+	destroy();
+}
+
+bool Entity::isDestroyed() const
+{
 	return mHitpoints <= 0;
 }
 
-void Entity::updateCurrent(sf::Time dt, CommandQueue& cmmands) {
+void Entity::updateCurrent(sf::Time dt, CommandQueue&)
+{	
 	move(mVelocity * dt.asSeconds());
 }

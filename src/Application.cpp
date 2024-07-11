@@ -1,124 +1,127 @@
-//
-// Created by stone on 2024-07-03.
-//
+#include "Application.hpp"
+#include "Utility.hpp"
+#include "State.hpp"
+#include "StateIdentifiers.hpp"
+#include "TitleState.hpp"
+#include "GameState.hpp"
+#include "MultiplayerGameState.hpp"
+#include "MenuState.hpp"
+#include "PauseState.hpp"
+#include "SettingsState.hpp"
+#include "GameOverState.hpp"
 
-#include "include/Application.h"
-
-#include "include/GameOverState.h"
-#include "include/GameState.h"
-#include "include/LoadingState.h"
-#include "include/MenuState.h"
-#include "include/PauseState.h"
-#include "include/SettingState.h"
-#include "include/StringHelpers.h"
-#include "include/TitleState.h"
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application()
-    : mWindow(sf::VideoMode(640, 480), "States", sf::Style::Close)
-    , mTextures()
-    , mFonts()
-    , mPlayer()
-    , mStateStack(State::Context(mWindow, mTextures, mFonts, mPlayer))
-    , mStatisticsText()
-    , mStatisticsUpdateTime()
-    , mStatisticsNumFrames(0)
+: mWindow(sf::VideoMode(1024, 768), "Network", sf::Style::Close)
+, mTextures()
+, mFonts()
+, mMusic()
+, mSounds()
+, mKeyBinding1(1)
+, mKeyBinding2(2)
+, mStateStack(State::Context(mWindow, mTextures, mFonts, mMusic, mSounds, mKeyBinding1, mKeyBinding2))
+, mStatisticsText()
+, mStatisticsUpdateTime()
+, mStatisticsNumFrames(0)
 {
-    mWindow.setKeyRepeatEnabled(false);
-    mFonts.load(Fonts::Main, "D:/sfml-start/src/Media/Sansation.ttf");
-    // mFonts.load(Fonts::Main, "E:/sfml-start/src/Media/Sansation.ttf");
+	mWindow.setKeyRepeatEnabled(false);
+	mWindow.setVerticalSyncEnabled(true);
 
-    mTextures.load(Textures::TitleScreen, "D:/sfml-start/src/Media/TitleScreen.png");
-    mTextures.load(Textures::ButtonNormal, "D:/sfml-start/src/Media/ButtonNormal.png");
-    mTextures.load(Textures::ButtonSelected, "D:/sfml-start/src/Media/ButtonSelected.png");
-    mTextures.load(Textures::ButtonPressed, "D:/sfml-start/src/Media/ButtonPressed.png");
+	mFonts.load(Fonts::Main, 	"D:/sfml-start/src/Media/Sansation.ttf");
 
-    // mTextures.load(Textures::TitleScreen, "E:/sfml-start/src/Media/TitleScreen.png");
-    // mTextures.load(Textures::ButtonNormal, "E:/sfml-start/src/Media/ButtonNormal.png");
-    // mTextures.load(Textures::ButtonSelected, "E:/sfml-start/src/Media/ButtonSelected.png");
-    // mTextures.load(Textures::ButtonPressed, "E:/sfml-start/src/Media/ButtonPressed.png");
+	mTextures.load(Textures::TitleScreen,	"D:/sfml-start/src/Media/Textures/TitleScreen.png");
+	mTextures.load(Textures::Buttons,		"D:/sfml-start/src/Media/Textures/Buttons.png");
 
-    mStatisticsText.setFont(mFonts.get(Fonts::Main));
-    mStatisticsText.setPosition(5.f, 5.f);
-    mStatisticsText.setCharacterSize(10u);
+	mStatisticsText.setFont(mFonts.get(Fonts::Main));
+	mStatisticsText.setPosition(5.f, 5.f);
+	mStatisticsText.setCharacterSize(10u);
 
-    registerStates();
-    // mStateStack.pushState(States::Title);
-    mStateStack.pushState(States::Loading);
+	registerStates();
+	mStateStack.pushState(States::Title);
 
+	mMusic.setVolume(25.f);
 }
 
-void Application::run() {
-    sf::Clock clock;
-    sf::Time timeSinceLastUpdate = sf::Time::Zero;
-    while (mWindow.isOpen()) {
-        sf::Time dt = clock.restart();
-        timeSinceLastUpdate += dt;
-        while (timeSinceLastUpdate > TimePerFrame) {
-            timeSinceLastUpdate -= TimePerFrame;
-            processInput();
-            update(TimePerFrame);
-            if (mStateStack.isEmpty()) {
-                mWindow.close();
-            }
-        }
-        updateStatistices(dt);
-        render();
-    }
+void Application::run()
+{
+	sf::Clock clock;
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
+	while (mWindow.isOpen())
+	{
+		sf::Time dt = clock.restart();
+		timeSinceLastUpdate += dt;
+		while (timeSinceLastUpdate > TimePerFrame)
+		{
+			timeSinceLastUpdate -= TimePerFrame;
+
+			processInput();
+			update(TimePerFrame);
+
+			// Check inside this loop, because stack might be empty before update() call
+			if (mStateStack.isEmpty())
+				mWindow.close();
+		}
+
+		updateStatistics(dt);
+		render();
+	}
 }
 
+void Application::processInput()
+{
+	sf::Event event;
+	while (mWindow.pollEvent(event))
+	{
+		mStateStack.handleEvent(event);
 
-
-
-void Application::processInput() {
-    sf::Event event;
-    while (mWindow.pollEvent(event)) {
-        mStateStack.handleEvent(event);
-        if (event.type == sf::Event::Closed) {
-            mWindow.close();
-        }
-    }
+		if (event.type == sf::Event::Closed)
+			mWindow.close();
+	}
 }
 
-void Application::update(sf::Time dt) {
-    mStateStack.update(dt);
+void Application::update(sf::Time dt)
+{
+	mStateStack.update(dt);
 }
 
-void Application::render() {
-    mWindow.clear();
-    mStateStack.draw();
-    mWindow.setView(mWindow.getDefaultView());
-    mWindow.draw(mStatisticsText);
-    mWindow.display();
+void Application::render()
+{
+	mWindow.clear();
+
+	mStateStack.draw();
+
+	mWindow.setView(mWindow.getDefaultView());
+	mWindow.draw(mStatisticsText);
+
+	mWindow.display();
 }
 
-void Application::updateStatistices(sf::Time dt) {
-    mStatisticsUpdateTime += dt;
-    mStatisticsNumFrames += 1;
-    if (mStatisticsUpdateTime >= sf::seconds(1.f)) {
-        mStatisticsText.setString("FPS " + toString(mStatisticsNumFrames));
-        mStatisticsUpdateTime -= sf::seconds(1.f);
-        mStatisticsNumFrames = 0;
-    }
+void Application::updateStatistics(sf::Time dt)
+{
+	mStatisticsUpdateTime += dt;
+	mStatisticsNumFrames += 1;
+	if (mStatisticsUpdateTime >= sf::seconds(1.0f))
+	{
+		mStatisticsText.setString("FPS: " + toString(mStatisticsNumFrames));
+
+		mStatisticsUpdateTime -= sf::seconds(1.0f);
+		mStatisticsNumFrames = 0;
+	}
 }
 
-void Application::registerStates() {
-    mStateStack.registerState<TitleState>(States::Title);
-    mStateStack.registerState<MenuState>(States::Menu);
-    mStateStack.registerState<GameState>(States::Game);
-    mStateStack.registerState<PauseState>(States::Pause);
-    mStateStack.registerState<LoadingState>(States::Loading);
-    mStateStack.registerState<SettingState>(States::Settings);
-    // mStateStack.registerState<GameOverState>(States::GameOver);
+void Application::registerStates()
+{
+	mStateStack.registerState<TitleState>(States::Title);
+	mStateStack.registerState<MenuState>(States::Menu);
+	mStateStack.registerState<GameState>(States::Game);
+	mStateStack.registerState<MultiplayerGameState>(States::HostGame, true);
+	mStateStack.registerState<MultiplayerGameState>(States::JoinGame, false);
+	mStateStack.registerState<PauseState>(States::Pause);
+	mStateStack.registerState<PauseState>(States::NetworkPause, true);
+	mStateStack.registerState<SettingsState>(States::Settings);
+	mStateStack.registerState<GameOverState>(States::GameOver, "Mission Failed!");
+	mStateStack.registerState<GameOverState>(States::MissionSuccess, "Mission Successful!");
 }
-
-
-
-
-
-
-
-
-

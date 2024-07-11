@@ -1,11 +1,8 @@
-//
-// Created by stone on 2024-06-25.
-//
+#include "Command.hpp"
 
-#include "include/Command.h"
 
-Command::Command() 
-	: action()
-	, category(Category::None) {
-
+Command::Command()
+: action()
+, category(Category::None)
+{
 }

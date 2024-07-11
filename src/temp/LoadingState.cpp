@@ -5,8 +5,8 @@
 #include "include/LoadingState.h"
 #include "include/Utility.h"
 #include "include/ResourceHolder.h"
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/View.hpp>
+#include <../../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics/RenderWindow.hpp>
+#include <../../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics/View.hpp>
 
 
 LoadingState::LoadingState(StateStack &stack, Context context)

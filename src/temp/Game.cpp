@@ -4,7 +4,7 @@
 
 #include "include/Game.h"
 #include "include/StringHelpers.h"
-#include "SFML/Window/Event.hpp"
+#include "../../cmake-build-debug/_deps/sfml-src/include/SFML/Window/Event.hpp"
 
 
 const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);

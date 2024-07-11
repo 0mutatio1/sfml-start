@@ -6,7 +6,7 @@
 #include "include/Utility.h"
 #include "include/ResourceHolder.h"
 
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <../../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics/RenderWindow.hpp>
 
 SettingState::SettingState(StateStack &stack, Context context)
     : State(stack, context)

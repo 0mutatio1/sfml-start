@@ -1,81 +1,79 @@
-//
-// Created by stone on 2024-07-04.
-//
-
-#include "include/PauseState.h"
-#include "include/Utility.h"
-#include "include/ResourceHolder.h"
+#include "PauseState.hpp"
+#include "Button.hpp"
+#include "Utility.hpp"
+#include "MusicPlayer.hpp"
+#include "ResourceHolder.hpp"
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/View.hpp>
 
-PauseState::PauseState(StateStack &stack, Context context)
-    : State(stack, context)
-    , mBackgroundSprite()
-    , mPauseText()
-    , mInstructionText()
+
+PauseState::PauseState(StateStack& stack, Context context, bool letUpdatesThrough)
+: State(stack, context)
+, mBackgroundSprite()
+, mPausedText()
+, mGUIContainer()
+, mLetUpdatesThrough(letUpdatesThrough)
 {
-    sf::Font& font = context.fonts->get(Fonts::Main);
-    sf::Vector2f viewSize = context.window->getView().getSize();
+	sf::Font& font = context.fonts->get(Fonts::Main);
+	sf::Vector2f windowSize(context.window->getSize());
 
-    mPauseText.setFont(font);
-    mPauseText.setString("Game Paused");
-    mPauseText.setCharacterSize(70);
-    centerOrigin(mPauseText);
+	mPausedText.setFont(font);
+	mPausedText.setString("Game Paused");	
+	mPausedText.setCharacterSize(70);
+	centerOrigin(mPausedText);
+	mPausedText.setPosition(0.5f * windowSize.x, 0.4f * windowSize.y);
 
-    mInstructionText.setFont(font);
-    mInstructionText.setString("(Press Backspace to return to the main menu)");
-    centerOrigin(mInstructionText);
-    mInstructionText.setPosition(0.5f * viewSize.x, 0.6f * viewSize.y);
+	auto returnButton = std::make_shared<GUI::Button>(context);
+	returnButton->setPosition(0.5f * windowSize.x - 100, 0.4f * windowSize.y + 75);
+	returnButton->setText("Return");
+	returnButton->setCallback([this] ()
+	{
+		requestStackPop();
+	});
+
+	auto backToMenuButton = std::make_shared<GUI::Button>(context);
+	backToMenuButton->setPosition(0.5f * windowSize.x - 100, 0.4f * windowSize.y + 125);
+	backToMenuButton->setText("Back to menu");
+	backToMenuButton->setCallback([this] ()
+	{
+		requestStateClear();
+		requestStackPush(States::Menu);
+	});
+
+	mGUIContainer.pack(returnButton);
+	mGUIContainer.pack(backToMenuButton);
+
+	getContext().music->setPaused(true);
 }
 
-
-void PauseState::draw() {
-    sf::RenderWindow& window = *getContext().window;
-    window.setView(window.getDefaultView());
-
-    sf::RectangleShape backgroundShape;
-    backgroundShape.setFillColor((sf::Color(0, 0, 0, 150)));
-    backgroundShape.setSize(window.getView().getSize());
-    window.draw(backgroundShape);
-    window.draw(mPauseText);
-    window.draw(mInstructionText);
+PauseState::~PauseState()
+{
+	getContext().music->setPaused(false);
 }
 
-bool PauseState::update(sf::Time dt) {
-    return false;
+void PauseState::draw()
+{
+	sf::RenderWindow& window = *getContext().window;
+	window.setView(window.getDefaultView());
+
+	sf::RectangleShape backgroundShape;
+	backgroundShape.setFillColor(sf::Color(0, 0, 0, 150));
+	backgroundShape.setSize(window.getView().getSize());
+
+	window.draw(backgroundShape);
+	window.draw(mPausedText);
+	window.draw(mGUIContainer);
 }
 
-bool PauseState::handleEvent(const sf::Event &event) {
-    if (event.type != sf::Event::KeyPressed) {
-        return false;
-    }
-    if (event.key.code == sf::Keyboard::Escape) {
-        requestStackPop();
-    }
-    if (event.key.code == sf::Keyboard::Backspace) {
-        requestStateClear();
-        requestStackPush(States::Menu);
-    }
-    return false;
+bool PauseState::update(sf::Time)
+{
+	return mLetUpdatesThrough;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+bool PauseState::handleEvent(const sf::Event& event)
+{
+	mGUIContainer.handleEvent(event);
+	return false;
+}
