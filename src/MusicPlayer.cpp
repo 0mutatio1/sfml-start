@@ -6,8 +6,8 @@ MusicPlayer::MusicPlayer()
 , mFilenames()
 , mVolume(100.f)
 {
-	mFilenames[Music::MenuTheme]    = "D:/sfml-start/src/Media/Music/MenuTheme.ogg";
-	mFilenames[Music::MissionTheme] = "D:/sfml-start/src/Media/Music/MissionTheme.ogg";
+	mFilenames[Music::MenuTheme]    = "E:/sfml-start/src/Media/Music/MenuTheme.ogg";
+	mFilenames[Music::MissionTheme] = "E:/sfml-start/src/Media/Music/MissionTheme.ogg";
 }
 
 void MusicPlayer::play(Music::ID theme)

@@ -29,10 +29,10 @@ Application::Application()
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setVerticalSyncEnabled(true);
 
-	mFonts.load(Fonts::Main, 	"D:/sfml-start/src/Media/Sansation.ttf");
+	mFonts.load(Fonts::Main, 	"E:/sfml-start/src/Media/Sansation.ttf");
 
-	mTextures.load(Textures::TitleScreen,	"D:/sfml-start/src/Media/Textures/TitleScreen.png");
-	mTextures.load(Textures::Buttons,		"D:/sfml-start/src/Media/Textures/Buttons.png");
+	mTextures.load(Textures::TitleScreen,	"E:/sfml-start/src/Media/Textures/TitleScreen.png");
+	mTextures.load(Textures::Buttons,		"E:/sfml-start/src/Media/Textures/Buttons.png");
 
 	mStatisticsText.setFont(mFonts.get(Fonts::Main));
 	mStatisticsText.setPosition(5.f, 5.f);

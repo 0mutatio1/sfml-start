@@ -177,11 +177,11 @@ bool World::hasPlayerReachedEnd() const
 
 void World::loadTextures()
 {
-	mTextures.load(Textures::Entities, "D:/sfml-start/src/Media/Textures/Entities.png");
-	mTextures.load(Textures::Jungle, "D:/sfml-start/src/Media/Textures/Jungle.png");
-	mTextures.load(Textures::Explosion, "D:/sfml-start/src/Media/Textures/Explosion.png");
-	mTextures.load(Textures::Particle, "D:/sfml-start/src/Media/Textures/Particle.png");
-	mTextures.load(Textures::FinishLine, "D:/sfml-start/src/Media/Textures/FinishLine.png");
+	mTextures.load(Textures::Entities, "E:/sfml-start/src/Media/Textures/Entities.png");
+	mTextures.load(Textures::Jungle, "E:/sfml-start/src/Media/Textures/Jungle.png");
+	mTextures.load(Textures::Explosion, "E:/sfml-start/src/Media/Textures/Explosion.png");
+	mTextures.load(Textures::Particle, "E:/sfml-start/src/Media/Textures/Particle.png");
+	mTextures.load(Textures::FinishLine, "E:/sfml-start/src/Media/Textures/FinishLine.png");
 }
 
 void World::adaptPlayerPosition()

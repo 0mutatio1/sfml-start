@@ -7,10 +7,10 @@ BloomEffect::BloomEffect()
 , mFirstPassTextures()
 , mSecondPassTextures()
 {
-	mShaders.load(Shaders::BrightnessPass,   "D:/sfml-start/src/Media/Shaders/Fullpass.vert", "D:/sfml-start/src/Media/Shaders/Brightness.frag");
-	mShaders.load(Shaders::DownSamplePass,   "D:/sfml-start/src/Media/Shaders/Fullpass.vert", "D:/sfml-start/src/Media/Shaders/DownSample.frag");
-	mShaders.load(Shaders::GaussianBlurPass, "D:/sfml-start/src/Media/Shaders/Fullpass.vert", "D:/sfml-start/src/Media/Shaders/GuassianBlur.frag");
-	mShaders.load(Shaders::AddPass,          "D:/sfml-start/src/Media/Shaders/Fullpass.vert", "D:/sfml-start/src/Media/Shaders/Add.frag");
+	mShaders.load(Shaders::BrightnessPass,   "E:/sfml-start/src/Media/Shaders/Fullpass.vert", "E:/sfml-start/src/Media/Shaders/Brightness.frag");
+	mShaders.load(Shaders::DownSamplePass,   "E:/sfml-start/src/Media/Shaders/Fullpass.vert", "E:/sfml-start/src/Media/Shaders/DownSample.frag");
+	mShaders.load(Shaders::GaussianBlurPass, "E:/sfml-start/src/Media/Shaders/Fullpass.vert", "E:/sfml-start/src/Media/Shaders/GuassianBlur.frag");
+	mShaders.load(Shaders::AddPass,          "E:/sfml-start/src/Media/Shaders/Fullpass.vert", "E:/sfml-start/src/Media/Shaders/Add.frag");
 }
 
 void BloomEffect::apply(const sf::RenderTexture& input, sf::RenderTarget& output)
