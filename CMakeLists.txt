@@ -14,7 +14,7 @@ FetchContent_MakeAvailable(SFML)
 add_executable(
     main
     src/main.cpp
-)
+    src/timeit.h)
 
 
 target_link_libraries(main PRIVATE sfml-graphics sfml-audio sfml-network)
