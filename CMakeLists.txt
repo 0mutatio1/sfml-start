@@ -14,7 +14,11 @@ FetchContent_MakeAvailable(SFML)
 add_executable(
     main
     src/main.cpp
+<<<<<<< HEAD
     src/timeit.h "src/viewit.h")
+=======
+    src/timeit.h "src/transformit.h" "src/shaderit.h")
+>>>>>>> 092f4fe84bd20a125835b0c7d0507ed480730aa0
 
 
 target_link_libraries(main PRIVATE sfml-graphics sfml-audio sfml-network)
