@@ -10,6 +10,7 @@
 #include "viewit.h"
 #include "transformit.h"
 #include "shaderit.h"
+#include "soundit.h"
 
 int main() {
 	// timeit();
@@ -22,8 +23,9 @@ int main() {
 	// tileMap();
 	// particle();
 	// transformit();
-	shaderit();
-	viewit();
+	// shaderit();
+	// viewit();
+	soundit();
 	return 0;
 }
 
