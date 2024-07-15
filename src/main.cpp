@@ -1,8 +1,3 @@
-
-
-
-
-
 #include "timeit.h"
 #include "threadit.h"
 #include "windowit.h"
@@ -12,6 +7,7 @@
 #include "vertexArray.h"
 #include "tileMap.h"
 #include "particle.h"
+#include "transformit.h"
 
 int main() {
 	// timeit();
@@ -22,7 +18,8 @@ int main() {
 	// shapeit();
 	// customVertexArray();
 	// tileMap();
-	particle();
+	// particle();
+	transformit();
 	return 0;
 }
 
