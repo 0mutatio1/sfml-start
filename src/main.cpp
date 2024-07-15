@@ -12,6 +12,7 @@
 #include "vertexArray.h"
 #include "tileMap.h"
 #include "particle.h"
+#include "viewit.h"
 
 int main() {
 	// timeit();
@@ -22,7 +23,8 @@ int main() {
 	// shapeit();
 	// customVertexArray();
 	// tileMap();
-	particle();
+	// particle();
+	viewit();
 	return 0;
 }
 
