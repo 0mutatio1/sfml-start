@@ -8,6 +8,7 @@
 #include "tileMap.h"
 #include "particle.h"
 #include "transformit.h"
+#include "shaderit.h"
 
 int main() {
 	// timeit();
@@ -19,7 +20,8 @@ int main() {
 	// customVertexArray();
 	// tileMap();
 	// particle();
-	transformit();
+	// transformit();
+	shaderit();
 	return 0;
 }
 
