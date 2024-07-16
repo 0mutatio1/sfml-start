@@ -14,7 +14,7 @@ FetchContent_MakeAvailable(SFML)
 add_executable(
     main
     src/main.cpp
-)
+ "src/socketit.h")
 
 
 

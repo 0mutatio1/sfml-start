@@ -11,6 +11,10 @@
 #include "transformit.h"
 #include "shaderit.h"
 #include "soundit.h"
+#include "socketit.h"
+
+
+
 
 int main() {
 	// timeit();
@@ -25,7 +29,11 @@ int main() {
 	// transformit();
 	// shaderit();
 	// viewit();
-	soundit();
+	// soundit();
+
+
+	socketit();
+
 	return 0;
 }
 
